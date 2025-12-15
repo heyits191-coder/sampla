@@ -4,23 +4,9 @@ export default async function handler(req, res) {
   }
 
   try {
-    const { resume, answers, presence } = req.body;
-
-    const prompt = `
-You are a strict AI HR interviewer.
-
-Resume:
-${resume}
-
-Answers:
-${JSON.stringify(answers)}
-
-Presence:
-${JSON.stringify(presence)}
-
-Give final interview report in JSON.
-Be strict.
-`;
+    // ⏱️ Timeout lagaya (15 sec)
+    const controller = new AbortController();
+    const timeout = setTimeout(() => controller.abort(), 15000);
 
     const response = await fetch(
       `https://generativelanguage.googleapis.com/v1beta/models/gemini-pro:generateContent?key=${process.env.GEMINI_API_KEY}`,
@@ -28,15 +14,29 @@ Be strict.
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({
-          contents: [{ parts: [{ text: prompt }] }]
-        })
+          contents: [{ parts: [{ text: "Analyze resume strictly" }] }]
+        }),
+        signal: controller.signal
       }
     );
 
-    const data = await response.json();
-    res.status(200).json(data);
+    clearTimeout(timeout);
 
-  } catch (e) {
-    res.status(500).json({ error: "AI failed" });
+    if (!response.ok) {
+      return res.status(500).json({ status: "error", message: "Gemini failed" });
+    }
+
+    const data = await response.json();
+
+    return res.status(200).json({
+      status: "done",
+      result: data
+    });
+
+  } catch (error) {
+    return res.status(500).json({
+      status: "error",
+      message: "Resume verification failed"
+    });
   }
 }

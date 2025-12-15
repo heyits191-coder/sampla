@@ -1,8 +1,0 @@
-{
-  "name": "ZELVORA copy",
-  "description": "Enterprise Interview Intelligence Platform. Simulates real corporate hiring interviews with AI-driven analytics.",
-  "requestFramePermissions": [
-    "camera",
-    "microphone"
-  ]
-}

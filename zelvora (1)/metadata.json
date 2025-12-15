@@ -1,0 +1,8 @@
+{
+  "name": "ZELVORA",
+  "description": "A professional interview preparation platform focused on real interview experiences.",
+  "requestFramePermissions": [
+    "camera",
+    "microphone"
+  ]
+}

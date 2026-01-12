@@ -69,7 +69,7 @@ const FounderSection: React.FC = () => {
             {/* Main Image Container with Curve */}
             <div className="relative aspect-[4/5] overflow-hidden bg-[#F0F0F0] rounded-[32px] shadow-[0_60px_120px_-20px_rgba(0,0,0,0.12)] transition-shadow duration-700 group-hover:shadow-[0_80px_140px_-30px_rgba(147,112,219,0.2)]">
               <img 
-                src="file_00000000536c7207a7135aa9bdc296a8.png" 
+                src="/images/file_00000000536c7207a7135aa9bdc296a8.png" 
                 alt="Anushka - Founder of Brand Spark"
                 className="w-full h-full object-cover grayscale-[20%] brightness-[1.02] transition-transform duration-[12000ms] ease-out group-hover:scale-110"
               />

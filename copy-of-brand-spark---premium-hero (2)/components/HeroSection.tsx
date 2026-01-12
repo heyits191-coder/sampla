@@ -51,7 +51,7 @@ const HeroSection: React.FC = () => {
                 className="w-full h-full object-cover"
               >
                 <source 
-                  src="Ultrarealistic_cinematic_hero_1080p_20260110.mp4" 
+                  src="/videos/Ultrarealistic_cinematic_hero_1080p_20260110.mp4" 
                   type="video/mp4" 
                 />
               </video>
